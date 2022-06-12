@@ -1,0 +1,312 @@
+
+Question 1 C#¶
+What data type is each of the following?
+
+5 - Integer 5.0 - float 5 > 1 - Boolean '5'- Character 5*2 - Integer '5' 2 - String '5' + '2' - Integer 5 / 2 - float 5 % 2 - Integer {5, 2, 1} - set 5 == 3 - boolean Pi double
+
+
+
+Question 2 C#
+
+Write (and evaluate) C# expressions that answer these questions:
+
+
+(a). How many letters are there in 'Supercalifragilisticexpialidocious'?
+
+            (a.) Solution :-
+
+using System; using System.Linq;
+
+namespace DataProgrammingAssignment { class Program { static void Main(string[] args) { //part A // Variable for first string to count number of letters in the string
+
+string i = "Supercalifragilisticexpialidocious";
+
+Console.WriteLine(i + " has " + i.Length + " Letters\n");
+
+          // OUTPUT of Part (a) is :-
+
+   Supercalifragilisticexpialidocious has 34 Letters
+
+
+(b). Does 'Supercalifragilisticexpialidocious' contain 'ice' as a substring?
+
+
+          (b.) Solution :-
+if (i.Contains("ice")) Console.WriteLine(i + " has ice as a substring\n");
+
+
+         // OUTPUT of Part (b.) is :-
+
+    Supercalifragilisticexpialidocious has ice as a substring
+
+
+
+(c). Which of the following words is the longest: Supercalifragilisticexpialidocious, Honorificabilitudinitatibus, or Bababadalgharaghtakamminarronnkonn?
+
+           (c) Solution :-
+
+string j = "Honorificabilitudinitatibus";
+
+Console.WriteLine(j + " has " + j.Length + " letters\n");
+
+string k = "Bababadalgharaghtakamminarronnkonn"; Console.WriteLine(k + " has " + k.Length + " letters\n");
+
+//Comparison of all 3 strings with an if else nest
+
+if (i.Length > j.Length) { if (i.Length > k.Length) Console.WriteLine(i + " is the longest word"); else if (i.Length < k.Length) Console.WriteLine(k + " is the longest word"); else Console.WriteLine("Both " + i + " and " + k + " are of equal length and longest words"); } else if (i.Length < j.Length) { if (j.Length > k.Length) Console.WriteLine(j + " is the longest word"); else if (j.Length < k.Length) Console.WriteLine(k + " is the longest word"); else Console.WriteLine("Both " + j + " and " + k + " are of equal length and longest words"); } else { if (i.Length > k.Length) Console.WriteLine("Both " + i + " and " + j + " are of equal length and longest words"); else if (i.Length < k.Length) Console.WriteLine(k + " is the longest word"); else Console.WriteLine("All " + i + ", " + j + ", and" + k + " have the same length"); }
+
+
+         // OUTPUT of Part (c.) is :-
+
+
+ Honorificabilitudinitatibus has 27 letters
+
+ Bababadalgharaghtakamminarronnkonn has 34 letters
+
+ Both Supercalifragilisticexpialidocious and Bababadalgharaghtakamminarronnkonn are of equal length and longest words
+
+
+
+
+(d.) Which composer comes first in the dictionary: 'Berlioz', 'Borodin', 'Brian', 'Bartok', 'Bellini', 'Buxtehude', 'Bernstein'. Which one comes last?
+
+            (d.) Solution :-
+//using an array to sort and select first and last words as if they were in a dictionary
+
+string[] stringArrayUnsorted = new string[] { "Berlioz", "Borodin", "Brian", "Bartok", "Bellini", "Buxtehude", "Bernstein" };
+
+int length = stringArrayUnsorted.Length;
+
+//using var to collect and sorQ2.pngt all the strings stored in unsorted array var sortedArray = from a in stringArrayUnsorted orderby a select a;
+
+Console.WriteLine(sortedArray.First()); Console.WriteLine(sortedArray.Last());
+
+////END OF Part d of question 2 Console.ReadLine(); } } }
+
+           // OUTPUT of Part (d.) is :-
+
+                   Bartok
+                 Buxtehude
+
+
+Question 3 C#
+
+Implement function triangleArea(a,b,c) that takes as input the lengths of the 3 sides of a triangle and returns the area of the triangle. By Heron's formula, the area of a triangle with side lengths a, b, and c is s(s − a)(s −b)(s −c), where s = (a + b + c)/2.
+
+triangleArea(2,2,2) 1.7320508075688772
+
+                            SOLUTION :- 
+
+
+using System; class Test { static float findArea(float a, float b, float c) { if (a < 0 || b < 0 || c < 0 || (a + b <= c) || a + c <= b || b + c <= a) { Console.Write("Not a valid triangle"); System.Environment.Exit(0); } float s = (a + b + c) / 2; return (float)Math.Sqrt(s * (s - a) * (s - b) * (s - c)); } public static void Main() { float a = 2.0f; float b = 2.0f; float c = 2.0f; Console.Write("The Area is " + findArea(a, b, c)); } }
+
+               OUTPUT - The Area is 1.7320508
+
+
+Question 4 C#
+Write a program in C# Sharp to separate odd and even integers in separate arrays. Go to the editor Test Data : Input the number of elements to be stored in the array :5 Input 5 elements in the array : element - 0 : 25 element - 1 : 47 element - 2 : 42 element - 3 : 56 element - 4 : 32 Expected Output: The Even elements are: 42 56 32 The Odd elements are : B 25 47
+
+              SOLUTION :-
+
+using System; public class Exercise10 { public static void Main() { int[] arr1 = new int[10]; int[] arr2 = new int[10]; int[] arr3 = new int[10]; int i, j = 0, k = 0, n;
+
+Console.Write("\n\nSeparate odd and even integers in separate arrays:\n"); Console.Write("------------------------------------------------------\n"); Console.Write("Input the number of elements to be stored in the array :"); n = Convert.ToInt32(Console.ReadLine()); Console.Write("Input {0} elements in the array :\n", n); for (i = 0; i < n; i++) { Console.Write("element - {0} : ", i); arr1[i] = Convert.ToInt32(Console.ReadLine()); }
+
+for (i = 0; i < n; i++) { if (arr1[i] % 2 == 0) { arr2[j] = arr1[i]; j++; } else { arr3[k] = arr1[i]; k++; } }
+
+Console.Write("\nThe Even elements are : \n"); for (i = 0; i < j; i++) { Console.Write("{0} ", arr2[i]); }
+
+Console.Write("\nThe Odd elements are :\n"); for (i = 0; i < k; i++) { Console.Write("{0} ", arr3[i]); } Console.Write("\n\n"); } }
+
+                                   
+                                        OUTPUT :-
+
+
+                Separate odd and Even Integers in separate arrays :
+
+                Input the number of elements to be stored in array : 5
+
+                Input 5 elements in the array:
+
+                element - 0 : 85
+                element - 1 : 25
+                element - 2 : 04
+                element - 3 : 65
+                element - 4 : 32
+
+                The even elements are 4, 32
+                The old elements are 25, 65, 85
+
+Question 5 C#
+
+
+(a.) Write a function inside(x,y,x1,y1,x2,y2) that returns True or False dependingonwhetherthepoint(x,y)liesintherectanglewithlowerleft corner (x1,y1) and upper right corner (x2,y2).
+
+inside(1,1,0,0,2,3) True inside(-1,-1,0,0,2,3) False
+
+               SOLUTION of part (a.) :-
+
+using System;
+
+namespace PS1_Q5 { class Program { static void Main(string[] args) {
+
+Double x, x1, x2, y, y1, y2;
+
+Console.WriteLine("Write points to find out the lower left and upper right corner of the rectangle \n"); x = Convert.ToDouble(Console.ReadLine()); y = Convert.ToDouble(Console.ReadLine()); x1 = Convert.ToDouble(Console.ReadLine()); y1 = Convert.ToDouble(Console.ReadLine()); x2 = Convert.ToDouble(Console.ReadLine()); y2 = Convert.ToDouble(Console.ReadLine());
+
+         // MERGING SOLUTION OF PART (b.) TO USE FUNCTION INSIDE() :-
+Inside(x, y, x1, y1, x2, y2); Console.ReadLine();
+}
+
+static void Inside(Double p, Double q, Double p1, Double q1, Double p2, Double q2)
+
+{
+
+if (p > p1 && p < p2 && q > q1 && q < q2) Console.WriteLine("True"); else Console.WriteLine("false"); }
+
+} }
+
+               OUTPUT :-
+
+         //FOR first INSTANCE
+
+         Write points to find out the lower left and upper right corner of the rectangle
+
+         1
+         1
+         0
+         0
+         2
+         3
+         2
+
+
+         //FOR second INSTANCE
+
+         Write points to find out the lower left and upper right corner of the rectangle
+
+         1
+         1
+         0
+         0
+         2
+         3
+         2
+
+
+         //FOR third INSTANCE
+
+         Write points to find out the lower left and upper right corner of the rectangle
+
+         1
+         1
+         0
+         0
+         2
+         3
+         2
+
+
+         //FOR fourth INSTANCE
+
+         Write points to find out the lower left and upper right corner of the rectangle
+
+         1
+         1
+         0
+         0
+         2
+         3
+         2
+
+
+Question 6 Python
+               
+
+                    SOLUTION :-
+
+pigLatin = input(" pig: ") wordList = pigLatin.lower().split(" ") vowels = ['a', 'e', 'i', 'o', 'u'] pigLatin = [] eachWord = [] for word in wordList: if word[0] in 'aeiou': #case where vowel is first pigLatin.append(word + 'way') else: for letter in word: if letter in 'aeiou': pigLatin.append(word[word.index(letter):] + word[:word.index(letter)] +'ay') break
+
+print(" ".join(pigLatin))
+
+
+
+# Question 7 Python
+
+              SOLUTION :-
+
+name = r"C:\bloodtype.txt" def bldcount(filename):
+#open file f = open(filename) BloodString = f.read() #calculates number oof patients with blood type ab= str(BloodString.count('AB')) a = str(BloodString.count('A ')) b = str(BloodString.count('B ')) o = str(BloodString.count('O ')) oo = str(BloodString.count('OO')) f.close() Report = "There are " + a + " patients of blood group A." +'\r\n' Report = Report + "There are " + b + " patients of blood group B." +'\r\n' Report = Report + "There are " + ab + " patients of blood group AB." +'\r\n' Report = Report + "There are " + o + " patients of blood group O." +'\r\n' Report = Report + "There are " + oo + " patients of blood group OO."
+
+return Report BloodReport = bldcount(name) print(BloodReport)
+
+                     OUTPUT
+
+           There are 15 patients of blood group A.
+           There are 14 patients of blood group B.
+           There are 13 patients of blood group AB.
+           There are 15 patients of blood group O.
+           There are 0 patients of blood  OO
+
+
+
+# Question 8 Python
+
+      SOLUTUION TO PART (1.) AND (2.) :-
+
+def curconv(Currency,Amount):
+#open file FileName = r"C:\Users\rahul\OneDrive\Documents\currency.txt" f = open(FileName) CurrencyList = f.readlines() f.close() for CountryCode in CurrencyList:
+
+#find Currency and exchange rate if Currency in CountryCode: CurrencyAmount = CountryCode.split() USAmount = float(CurrencyAmount[1]) * Amount
+
+return USAmount
+
+USD =curconv('EUR',100) print (USD)
+
+USD =curconv('JPY',100) print (USD)
+
+                    OUTPUT
+
+                   122.96544
+                   1.241401
+
+
+# Question 9 Python
+
+           SOLUTUIONS :-
+
+A: Unsupported operand type(s) for +: 'int' and 'str'
+
+B: IndexError: list index out of range
+
+C: ValueError: math domain error
+
+D: Name 'x' is not defined
+
+E: No such file or directory: 'example.txt'
+
+
+
+Question 10 Python
+
+
+           SOLUTUION :-
+
+
+def frequencies(string):
+
+Letters='abcdefghijklmnopqrstuvwxyz' Letterslenght = len(Letters) MyString = string.lower() FrequenciesString =""
+
+for x in range(Letterslenght -1): FrequenciesString = FrequenciesString + str(MyString.count(Letters[x])) +' '
+
+return FrequenciesString
+
+FrequenciesString =frequencies("The quick red fox got bored and went home.")
+print(FrequenciesString) FrequenciesString =frequencies("apple")
+print(FrequenciesString)
+
+
+                     OUTPUT
+
+    1 1 1 3 5 1 1 2 1 0 1 0 1 2 4 0 1 2 0 3 1 0 1 1 0 
+    1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 2 0 0 0 0 0 0 0 0 0
